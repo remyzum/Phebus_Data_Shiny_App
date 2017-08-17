@@ -47,6 +47,27 @@ border-color: #956c43;
     color: #956c43;
 }
 
+/* Animated underline for the main nav */
+
+.navbar .navbar-nav>li>a:after {
+	content: '';
+	display: block;
+	margin: auto;
+	margin-top: -1px;
+	height: 1px;
+	width: 0px;
+	background: transparent;
+	transition: width .4s ease, background-color .4s ease;
+}
+.navbar .navbar-nav>li>a:hover:after {
+	width: 100%;
+	background: #956c43;
+}
+.navbar .navbar-nav>.active>a:hover:after {
+	width: 0px;
+	background: transparent;
+}
+
 
 /* Customize fonts */
 body, label, input, button, select { 
@@ -56,12 +77,48 @@ body, label, input, button, select {
   font-weight: 200;
   font-size: 13px;
 }
-h2 { font-weight: 400; }
+h2 { font-weight: 200;
+	 font-size: 14px;
+	 margin: 0 0 25px 0;
+	
+	 }
 h3 { font-weight: 200;
      font-size: 1.67em;
       margin-top: 1.33em; 
     }
 
+h5 { font-weight: 200;
+     font-size: 1.67em;
+      margin-top: 4.33em; 
+    }    
+
+
+/* sablier  */
+#loading-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  margin-top: -33px;  /* half of the spinner's height */
+  margin-left: -33px; /* half of the spinner's width */
+}
+
+/* Page de loading initialisation du server  */
+#loading-content {
+  position: fixed;
+  background: #FFFFFF;
+  padding-top:0px;
+  opacity: 0.9;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  height: 100%;
+  text-align: center;
+  vertical-align: text-bottom;
+  color: #FFFFFF;
+}
+
+/* DIV Controls (absolutePanel pour indicators ) */
 #controls {
   /* Appearance */
   background-color: white;
@@ -73,12 +130,112 @@ h3 { font-weight: 200;
   opacity: 0.65;
   zoom: 0.9;
   transition: opacity 500ms 1s;
+ -webkit-animation-name: example_1; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 0.2s; /* Chrome, Safari, Opera */
+    animation-name: example_1;
+    animation-duration: 0.2s;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes example_1 {
+    0%   {width: 0px; height: "auto"}
+    100% {width:230px; height: "auto";}
 }
 #controls:hover {
   /* Fade in while hovering */
   opacity: 0.95;
   transition-delay: 0;
 }
+
+/* DIV Controls (absolutePanels pour prediction ) */
+#controls_model {
+  /* Appearance */
+  background-color: white;
+  padding: 0 20px 20px 20px;
+  border: 1px solid grey; 
+  padding-top:30px;
+  cursor: move;
+  /* Fade out while not hovering */
+  opacity: 0.65;
+  zoom: 0.9;
+  transition: opacity 500ms 1s;
+  -webkit-animation-name: example_2; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 0.2s; /* Chrome, Safari, Opera */
+    animation-name: example_2;
+    animation-duration: 0.2s;
+}
+
+/* Chrome, Safari, Opera  pour les absolute panels qui apparaissent*/
+@-webkit-keyframes example_2 {
+    0%   {width: 0px; height: "auto"}
+    100% {width:230px; height: "auto";}
+}
+
+#controls_model:hover {
+  /* Fade in while hovering */
+  opacity: 0.95;
+  transition-delay: 0;
+}
+
+/* DIV Button (dans div control ) */
+#Button {
+  /* Appearance */
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 12px;
+  background-color: #f0ece5;
+  color: #956c43;
+  border-radius: 10px;
+  border: none;
+  /*border-color: #956c43;*/
+  /*border: 1px solid grey;*/
+  /*padding: 0 20px 20px 20px;
+  padding-top:30px;  
+  width : 200px; */
+}
+
+
+.btn {
+  display: inline-block;
+  background-color: #f0ece5;
+  color: #956c43;
+  transition: all 0.5s;
+  cursor: pointer;
+  width: 200px;
+  border: none;
+  /*display:block;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: 1px solid red;*/
+}
+
+/*.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn span:after {
+  content: ">>";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn:hover span {
+  padding-right: 25px;
+}
+
+.btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}*/
+
 
 /* Position and style citation */
 #cite {
@@ -87,6 +244,15 @@ h3 { font-weight: 200;
   left: 10px;
   font-size: 12px;
 }
+
+/* Position and style citation */
+#text_milieu {
+  position: absolute;
+  top: 40px;
+  left: 300px;
+  font-size: 14px;
+}
+
 
 /* If not using map tiles, show a white background */
 .leaflet-container {
