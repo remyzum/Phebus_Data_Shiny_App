@@ -1,7 +1,7 @@
 # Shiny App - Multilevel Regression Model on Phebus Dataset.
 Residential Household Energy Consumption prediction in France.
 
-Using this Shiny App, one can model and predict the household yeary energy consumption in each level-2 variables (agregated "département") by tuning several level-1 (indvidual) variables. 
+Using this Shiny App, one can model and predict the household yeary energy consumption in each administrative division called "département" agregated (level-2) by tuning several level-1 -indvidual- variables. 
 The model is based on a random-intercept multilevel model using nlme package in R.
 
 # Questions :
